@@ -1,20 +1,18 @@
 @import "./theme.css";
-/* ================= Register.css ================= */
 
-.register-container {
+/* Container */
+.login-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--ink); /* dark ink background */
+  background: var(--ink);
   font-family: 'DM Sans', sans-serif;
-  padding: 20px;
   position: relative;
   overflow: hidden;
 }
 
-/* Soft radial glow behind card */
-.register-container::before {
+.login-container::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -23,74 +21,76 @@
 }
 
 /* Card */
-.register-card {
-  background: rgba(250,247,242,0.05); /* soft parchment card */
+.login-card {
+  background: rgba(250,247,242,0.05);
   backdrop-filter: blur(15px);
   padding: 35px;
   border-radius: 22px;
   width: 100%;
   max-width: 380px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
   text-align: center;
   color: var(--parchment);
   z-index: 1;
+  position: relative;
 }
 
 /* Heading */
-.register-card h2 {
-  color: var(--gold-light); /* gold heading */
+.login-card h2 {
+  color: var(--gold-light);
   margin-bottom: 5px;
   font-family: 'Cormorant Garamond', serif;
 }
 
 .subtitle {
-  color: rgba(250,247,242,0.7); /* soft parchment subtitle */
+  color: rgba(250,247,242,0.7);
   font-size: 13px;
   margin-bottom: 20px;
 }
 
-/* Inputs + Textarea */
-.register-card input,
-.register-card textarea {
+/* Inputs */
+.form-group {
+  margin-bottom: 15px;
+}
+
+input {
   width: 100%;
   padding: 12px 14px;
-  margin: 10px 0;
-  border: none;
   border-radius: 10px;
+  border: none;
   outline: none;
   font-size: 14px;
-  resize: none;
-  background: rgba(250,247,242,0.12); /* translucent parchment input */
+  background: rgba(250,247,242,0.12);
   color: var(--parchment);
   box-sizing: border-box;
   transition: 0.3s ease;
 }
 
-/* Focus effect */
-.register-card input:focus,
-.register-card textarea:focus {
-  box-shadow: 0 0 6px var(--gold-light); /* golden focus glow */
+input::placeholder {
+  color: rgba(250,247,242,0.5);
+}
+
+input:focus {
+  box-shadow: 0 0 6px var(--gold-light);
 }
 
 /* Button */
-.register-card button {
+button {
   width: 100%;
   padding: 12px 14px;
   margin-top: 15px;
   border: none;
   border-radius: 10px;
-  background: var(--gold); /* warm gold button */
-  color: var(--ink); /* dark text for contrast */
+  background: var(--gold);
+  color: var(--ink);
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
-  box-sizing: border-box;
 }
 
-/* Hover */
-.register-card button:hover {
+button:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(200,144,42,0.6); /* subtle gold shadow */
+  box-shadow: 0 5px 20px rgba(200,144,42,0.6);
 }
 
 /* Login link */
@@ -106,9 +106,27 @@
   font-weight: 500;
 }
 
-/* Mobile Responsive */
+/* Alert message */
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.alert.success {
+  background: rgba(0, 232, 122, 0.2);
+  color: var(--parchment);
+}
+
+.alert.error {
+  background: rgba(255, 50, 50, 0.2);
+  color: var(--parchment);
+}
+
+/* Responsive */
 @media (max-width: 480px) {
-  .register-card {
+  .login-card {
     padding: 25px;
   }
 }
