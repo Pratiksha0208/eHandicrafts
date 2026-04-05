@@ -1,0 +1,90 @@
+/* Full page background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+/* Center container */
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+  color: #fff;
+}
+
+/* Heading */
+.register-container h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Input fields */
+.register-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border: none;
+  outline: none;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+
+  font-size: 14px;
+}
+
+/* Placeholder color */
+.register-container input::placeholder {
+  color: #eee;
+}
+
+/* Focus effect */
+.register-container input:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Button */
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #00e676;
+  color: #000;
+
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+/* Button hover */
+.register-container button:hover {
+  background: #00c853;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .register-container {
+    margin: 40px 20px;
+    padding: 20px;
+  }
+}

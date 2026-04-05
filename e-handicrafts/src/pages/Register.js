@@ -1,11 +1,17 @@
 import '../Styles/Register.css';
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Register() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const role = queryParams.get('role');
+
   const [form, setForm] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: role || 'buyer'
   });
 
   const handleChange = (e) => {
@@ -22,7 +28,11 @@ function Register() {
 
   return (
     <div className='register-container'>
-      <h2>Business Registration</h2>
+      <h2>
+        {form.role === 'seller' 
+          ? 'Merchant Registration' 
+          : 'Buyer Registration'}
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <input 
