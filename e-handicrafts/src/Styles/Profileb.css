@@ -1,0 +1,247 @@
+/* ──────── General Page Styles ───────── */
+.profile-page-container {
+  display: flex;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* ──────── Sidebar ───────── */
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  padding: 25px 20px;
+  box-shadow: 3px 0 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.user-greeting {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.avatar img {
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border: 2px solid #1a73e8;
+  transition: transform 0.3s ease;
+}
+
+.avatar img:hover {
+  transform: scale(1.1);
+}
+
+.greeting-text {
+  margin-left: 12px;
+}
+
+.greeting-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.greeting-text h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ──────── Sidebar Sections ───────── */
+.sidebar-section {
+  margin-bottom: 25px;
+}
+
+.sidebar-section h4 {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-section li {
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.25s ease;
+}
+
+.sidebar-section li:hover,
+.sidebar-section li.active {
+  background: #e8f0fe;
+  font-weight: 500;
+  color: #1a73e8;
+}
+
+.amount {
+  color: green;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ──────── Main Content ───────── */
+.main-content {
+  flex: 1;
+  padding: 35px 40px;
+}
+
+/* Section Card */
+.info-section {
+  background-color: #fff;
+  padding: 22px 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: #155ab6;
+  transform: scale(1.05);
+}
+
+/* Input Fields */
+.input-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.input-row input,
+.info-section input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-row input:focus,
+.info-section input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 5px rgba(26, 115, 232, 0.3);
+  outline: none;
+}
+
+input[readonly] {
+  background: #f2f3f5;
+  cursor: not-allowed;
+}
+
+/* Gender Radio Buttons */
+.gender-row {
+  margin-top: 12px;
+}
+
+.gender-row label {
+  margin-right: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.gender-row input {
+  margin-right: 6px;
+}
+
+/* FAQ Styling */
+.faq p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.faq strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* ──────── Responsive ───────── */
+@media (max-width: 1024px) {
+  .profile-page-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    flex-direction: row;
+    padding: 15px 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+
+  .sidebar-section {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  .avatar img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .greeting-text h2 {
+    font-size: 1rem;
+  }
+}

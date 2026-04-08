@@ -5,6 +5,7 @@ import Role from './pages/RoleSelect';
 import Merchant from './pages/Merchant';
 import Splash from './pages/Splash';
 import Login from './pages/Login'; // FIX: Capital L
+import Profileb from './pages/Profileb';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/role" element={<Role />} />
         <Route path="/register-buyer" element={<Register />} />
         <Route path="/register-seller" element={<Merchant />} />
+        <Route path="/profileb" element={<Profileb />} />
       </Routes>
     </Router>
   );
