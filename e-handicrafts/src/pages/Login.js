@@ -20,7 +20,8 @@ const LoginPage = () => {
       showAlert("Login successful! Redirecting...", "success");
       setTimeout(() => {
         // replace with real redirect
-        window.location.href = "/profileb";
+        // window.location.href = "/profileb";
+        window.location.href = "/dashboard";
       }, 2000);
     } else {
       showAlert("Invalid email or password.", "error");
