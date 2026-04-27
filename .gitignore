@@ -1,0 +1,21 @@
+# dependencies
+e-handicrafts/node_modules/
+e-handicrafts/.pnp
+e-handicrafts/.pnp.js
+
+# testing
+e-handicrafts/coverage/
+
+# production
+e-handicrafts/build/
+
+# misc
+e-handicrafts/.DS_Store
+e-handicrafts/.env.local
+e-handicrafts/.env.development.local
+e-handicrafts/.env.test.local
+e-handicrafts/.env.production.local
+
+e-handicrafts/npm-debug.log*
+e-handicrafts/yarn-debug.log*
+e-handicrafts/yarn-error.log*

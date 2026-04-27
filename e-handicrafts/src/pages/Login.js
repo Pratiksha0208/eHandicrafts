@@ -1,52 +1,53 @@
-// LoginPage.jsx
 import React, { useState } from "react";
-import "../Styles/Login.css"; // your theme + login styles
+import "../Styles/Login.css";
+import image1 from '../images/image1.jpg';
+import image2 from '../images/image2.jpg';
+import image3 from '../images/image3.jpg';
+import image4 from '../images/image4.jpg';
 
-const LoginPage = () => {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [alert, setAlert] = useState({ message: "", type: "" });
 
-  // Dummy credentials
-  const dummyUser = {
-    email: "user@ehandicrafts.com",
-    password: "handmade123",
-  };
-
-  const handleSubmit = (e) => {
+  // Handle form submit
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email === dummyUser.email && password === dummyUser.password) {
-      showAlert("Login successful! Redirecting...", "success");
-      setTimeout(() => {
-        // replace with real redirect
-        // window.location.href = "/profileb";
-        window.location.href = "/dashboard";
-      }, 2000);
-    } else {
-      showAlert("Invalid email or password.", "error");
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
     }
-  };
 
-  const showAlert = (message, type) => {
-    setAlert({ message, type });
-    setTimeout(() => {
-      setAlert({ message: "", type: "" });
-    }, 3000);
-  };
+    // Dummy login logic (replace with backend later)
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-  const handleRegisterRedirect = () => {
-    window.location.href = "/role";
+    alert("Login Successful 🚀");
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2>Login</h2>
-        <p className="subtitle">Welcome back! Please enter your credentials.</p>
+    <div className="container">
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
+      {/* LEFT SIDE */}
+      <div className="left">
+        <div className="diamond-container">
+          <img src={image1} className="diamond d1" alt="img1" />
+          <img src={image2} className="diamond d2" alt="img2" />
+          <img src={image3} className="diamond d3" alt="img3" />
+          <img src={image4} className="diamond d4" alt="img4" />
+        </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="right">
+        <div className="login-box glass">
+
+          <div className="logo">🪔 eHandicrafts</div>
+
+          <h2>Welcome Back 👋</h2>
+          <p>Login to your account</p>
+
+          <form onSubmit={handleLogin}>
             <input
               type="email"
               placeholder="Email"
@@ -54,8 +55,7 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
+
             <input
               type="password"
               placeholder="Password"
@@ -63,22 +63,15 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
 
-          <button type="submit">Login</button>
+            <button type="submit">Login</button>
+          </form>
 
-          {alert.message && (
-            <div className={`alert ${alert.type}`}>{alert.message}</div>
-          )}
-        </form>
-
-        <p className="login-link">
-          Don't have an account?{" "}
-          <span onClick={handleRegisterRedirect}>Register</span>
-        </p>
+        </div>
       </div>
+
     </div>
   );
-};
+}
 
-export default LoginPage;
+export default Login;
