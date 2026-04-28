@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import allProducts from '../data/products';
@@ -8,6 +9,54 @@ const categories = ['All', 'Home Decor', 'Kitchenware', 'Fashion'];
 
 const HomePage = () => {
   const { addToCart, cartCount, cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();
+
+import { useNavigate } from "react-router-dom";
+import '../Styles/Dashboard.css';
+
+// Sample handmade products
+const allProducts = [
+  {
+    id: 1,
+    name: 'Handwoven Macrame Wall Hanging',
+    category: 'Home Decor',
+    price: 1299,
+    originalPrice: 1999,
+    discount: '35% off',
+    rating: 4.8,
+    reviews: 214,
+    image: 'https://images.unsplash.com/photo-1605001011156-cbf0b0f67a51?q=80&w=300&auto=format',
+  },
+  {
+    id: 2,
+    name: 'Terracotta Coffee Mug (Set of 2)',
+    category: 'Kitchenware',
+    price: 899,
+    originalPrice: 1199,
+    discount: '25% off',
+    rating: 4.6,
+    reviews: 157,
+    image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=300&auto=format',
+  },
+  {
+    id: 3,
+    name: 'Beaded Dreamcatcher',
+    category: 'Home Decor',
+    price: 649,
+    originalPrice: 899,
+    discount: '28% off',
+    rating: 4.9,
+    reviews: 88,
+    image: 'https://images.unsplash.com/photo-1604881991720-f91ada269799?q=80&w=300&auto=format',
+  }
+];
+
+const categories = ['All', 'Home Decor', 'Kitchenware', 'Fashion'];
+
+const ProductStore = () => {
+  const navigate = useNavigate(); // 🔥 navigation added
+
+  const [cartItems, setCartItems] = useState([]);
+>>>>>>> Stashed changes:e-handicrafts/src/pages/Dashboard.js
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [cartOpen, setCartOpen] = useState(false);
@@ -20,6 +69,7 @@ const HomePage = () => {
 
   return (
     <div className="store-container">
+
       {/* Header */}
       <header className="store-header">
         <Link to="/" className="header-left" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -35,7 +85,23 @@ const HomePage = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
+
+
+        {/* 🔥 UPDATED HEADER RIGHT */}
+
         <div className="header-right">
+
+          {localStorage.getItem("role") === "seller" && (
+      <button onClick={() => navigate("/seller")}>
+        Seller Dashboard
+  </button>
+    )}
+          {/* Orders Button */}
+          <button className="nav-btn" onClick={() => navigate("/orders")}>
+            <i className="fas fa-box"></i> Orders
+          </button>
+
+          {/* Cart Button */}
           <button className="cart-btn" onClick={() => setCartOpen(!cartOpen)}>
             <i className="fas fa-shopping-cart"></i>
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
@@ -43,7 +109,11 @@ const HomePage = () => {
         </div>
       </header>
 
+
       {/* Category Pills */}
+
+      {/* Category Filter */}
+
       <div className="category-pills">
         {categories.map((cat) => (
           <button
@@ -56,11 +126,16 @@ const HomePage = () => {
         ))}
       </div>
 
+
       {/* Product Grid */}
+
+      {/* Products */}
+
       <div className="main-layout">
         <section className="product-grid">
           {filteredProducts.map((product) => (
             <div className="product-card" key={product.id}>
+
               {/* Clickable area linking to detail page */}
               <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <div className="product-image">
@@ -91,6 +166,21 @@ const HomePage = () => {
             <div className="no-results">
               <i className="fas fa-box-open"></i>
               <p>No products found. Try a different search or category.</p>
+
+              <div className="product-image">
+                <img src={product.image} alt={product.name} />
+                <span className="discount-tag">{product.discount}</span>
+              </div>
+
+              <div className="product-info">
+                <h4>{product.name}</h4>
+                <p>₹{product.price}</p>
+
+                <button className="add-to-cart" onClick={() => addToCart(product)}>
+                  Add to Cart
+                </button>
+              </div>
+
             </div>
           )}
         </section>
@@ -98,48 +188,19 @@ const HomePage = () => {
         {/* Cart Sidebar */}
         <div className={`cart-sidebar ${cartOpen ? 'open' : ''}`}>
           <div className="cart-header">
-            <h3>Shopping Cart ({cartCount})</h3>
-            <button className="close-cart" onClick={() => setCartOpen(false)}>
-              <i className="fas fa-times"></i>
-            </button>
+            <h3>Cart ({cartCount})</h3>
+            <button onClick={() => setCartOpen(false)}>X</button>
           </div>
-          <div className="cart-items">
-            {cartItems.length === 0 ? (
-              <div className="empty-cart">
-                <i className="fas fa-shopping-bag"></i>
-                <p>Your cart is empty</p>
-              </div>
-            ) : (
-              cartItems.map((item) => (
-                <div className="cart-item" key={item.id}>
-                  <img src={item.image} alt={item.name} className="cart-item-img" />
-                  <div className="cart-item-details">
-                    <p className="cart-item-name">{item.name}</p>
-                    <p className="cart-item-price">₹{item.price} x {item.quantity}</p>
-                    <div className="qty-control">
-                      <button onClick={() => updateQuantity(item.id, -1)}>-</button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, 1)}>+</button>
-                    </div>
-                  </div>
-                  <button className="remove-item" onClick={() => removeFromCart(item.id)}>
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
-                </div>
-              ))
-            )}
-          </div>
-          {cartItems.length > 0 && (
-            <div className="cart-footer">
-              <div className="cart-total">
-                <span>Total:</span>
-                <span>₹{cartTotal}</span>
-              </div>
-              <button className="checkout-btn">Proceed to Checkout</button>
+
+          {cartItems.map((item) => (
+            <div key={item.id}>
+              <p>{item.name}</p>
+              <p>₹{item.price} x {item.quantity}</p>
             </div>
-          )}
+          ))}
+
+          <h3>Total: ₹{cartTotal}</h3>
         </div>
-        {cartOpen && <div className="cart-overlay" onClick={() => setCartOpen(false)}></div>}
       </div>
     </div>
   );
