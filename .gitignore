@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # dependencies
 e-handicrafts/node_modules/
 e-handicrafts/.pnp
@@ -19,3 +20,28 @@ e-handicrafts/.env.production.local
 e-handicrafts/npm-debug.log*
 e-handicrafts/yarn-debug.log*
 e-handicrafts/yarn-error.log*
+=======
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> 6800e793 (Added seller dashboard and login role logic)
